@@ -1,17 +1,21 @@
 import React from "react";
+import { Grid } from "@mui/material";
+import PostItem from "./PostItem";
 
-const PostsList = (props) => {
+const PostsList = ({posts}) => {
+    
     return(
-        <div>
-            {props.posts.map( (post, index) =>
-        <div key={post.id}className='post'>
-            <strong>{index+1}. {post.title}</strong>
-            <br/>{post.body} 
-            <p style={{textAlign: 'right', color: 'grey'}}>{post.date}</p>
-        </div> 
-      )}
-        </div>
-    )
-}
+        <Grid container spasing={3}>
+            {posts.map((post, index) =>
+               <PostItem 
+                    
+                    key={post.id} 
+                    number={index + 1} 
+                    post={post}
+                /> 
+            )}
+        </Grid>
+    );
+};
 
 export default PostsList;

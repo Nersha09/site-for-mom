@@ -1,21 +1,31 @@
-import { OptionUnstyled } from "@mui/base";
+import {Box, MenuItem, TextField } from '@mui/material';
 import React from "react";
 
 
 const MySelect = ({defaultValue, options, value, onChange}) => {
     return(
-        <select
-            value={value}
-            onChange={e => onChange(e.target.value)}
-        >
-            <option disabled value="">{defaultValue}</option>
-            {options.map(option =>
-              <option key={option.value} value={option.value}>
-                  {option.name}
-              </option>  
+        <Box sx={{
+            '& .MuiTextField-root': {ml: '5px', width: '226px' },
+          }}>
+            <TextField
+                // sx={{ mt:'10px', minWidth: '40px'}}
+                label={defaultValue}
+                size= 'small'
+                select
+                variant='outlined'
+                value={value}
+                onChange={event => onChange(event.target.value)}
+            >
+                <MenuItem value="sort" disabled>{defaultValue}</MenuItem >
+                {options.map(option =>
+                    <MenuItem key={option.value} value={option.value}>
+                        {option.name}
+                    </MenuItem >  
                 )}
-            
-        </select>
+                
+            </TextField>
+        </Box>
+        
     )
 }
 

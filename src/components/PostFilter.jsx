@@ -1,22 +1,38 @@
-import React from "react";
-import MyInput from "../UI/select/input/MuInput";
-import MySelect from "../UI/select/MySelect";
 
-const PostFilter = (props) => {
+import React, {useState} from "react";
+import MyInput from "../UI/input/MyInput";
+import MySelect from "../UI/select/MySelect";
+import SearchButton from "../UI/iconButton/SearchButton";
+import { IconButton } from "@mui/material";
+import PostServise from "../API/PostServis";
+import { useFetching } from "../hooks/useFetching";
+
+const PostFilter = ({ filter, setFilter, fetchSortedPosts}) => {
+    
+  
     return(
         <div className="filter_style">
+            {/* <IconButton onClick={() => setVisible(true)}>
+                <SearchButton/>
+            </IconButton> */}
             <MyInput
-                // placeholder="Поиск"
-                // value={props.serchQuery}
-                // onChange={e => props.setSerchQuery(e.target.value)}
+                    styles={{maxWidth: '226px'}}
+                    value={filter.query}
+                    // onChange={e => setFilter({...filter, query: e.target.value})}
+                    size="small"
+                    label="Поиск" 
+                    variant="outlined" 
+                    color="warning"
             />
             <MySelect
-                value={props.selectedSort}
-                onChange={props.sort}
+                value=''
+                // value={filter.sort}
+                onChange={e => fetchSortedPosts(e)}
+                
                 defaultValue="Сортировать"
                 options={[
-                {value: "date", name: "по дате"},
-                {value: "title", name: "по названию"}
+                    {value: "-date", name: "по дате"},
+                    {value: "header", name: "по названию"}
                 ]}
             />
         </div>
