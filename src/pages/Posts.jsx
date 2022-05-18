@@ -11,15 +11,13 @@ import MyPogination from '../UI/myPogination/MyPogination';
 import { Container } from '@mui/material';
 
 
-function Posts() {
+function Posts () {
   const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState({sort: '', query: ''});
   const [modal, setModal] = useState(false);
   const [limit, setLimit] = useState(12)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [ordering, setOrdering] = useState([]);
-  const [sortedPostst, setSortedPostst] = useState([]);
   const [ord, setOrd] = useState('-id');
 
    
@@ -45,14 +43,12 @@ function Posts() {
 
   const fetchSortedPosts = async(sorting) => {
     setOrd(sorting);
-    // setCurrentPage(1);
     const response = await PostServise.getAll(ord, limit, currentPage);
-    setPosts(response.data.results);
-    // console.log(sorting)
-    // const response = await PostServise.getSorting(sorting, limit, currentPage);
-    // setOrdering(response.data.results);
-    
-    // console.log(response.data.results, 456577);
+    setCurrentPage(0)
+    setCurrentPage(1)
+    // setPosts(response.data.results);
+    // setTotalPages(response.data.total_pages);
+    console.log(posts);
   }  
  
     
@@ -69,9 +65,7 @@ function Posts() {
   }) 
 
   // const [fetchSortedPosts, sortedError] = useFetching( async(sorting) => {
-  //   const response = await PostServise.getSorting(sorting);
-  //   setOrdering(response.data.results);
-  //   console.log(ordering);
+    
 
   // })
 

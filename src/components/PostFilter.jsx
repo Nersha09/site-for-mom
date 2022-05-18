@@ -26,9 +26,7 @@ const PostFilter = ({ filter, setFilter, fetchSortedPosts}) => {
             />
             <MySelect
                 value=''
-                // value={filter.sort}
                 onChange={e => fetchSortedPosts(e)}
-                
                 defaultValue="Сортировать"
                 options={[
                     {value: "-date", name: "по дате"},

@@ -4,10 +4,12 @@ import { useParams } from 'react-router-dom';
 import { useFetching } from '../hooks/useFetching';
 import { Container } from '@mui/material';
 import Corusel from '../UI/corusel/MyCorusel';
+import MyModal from '../UI/modal/MyModal';
 
 const ItemPage = () => {
   const params = useParams()
   const [post, setPosts] = useState({})
+  const [visible, setVisible] = useState(false)
 
   const [fetchPostsById, idError] = useFetching(async() => {
     const response = await PostServise.getById(params.id);
@@ -28,8 +30,9 @@ const ItemPage = () => {
           boxShadow: '0 0 5px #888', 
           mt:'20px', 
           mb: '10px'}}>
-            {/* <Corusel> */}
-              <div className='photos_style'>
+            
+              <div className='photos_style' 
+                onClick={() => setVisible(true)}>
                 <div className='image_direction'>
                   <img className='item_image' src={post.image}/>
                   <img className='item_image' src={post.image}/>
@@ -38,8 +41,22 @@ const ItemPage = () => {
                 </div>
                 <img className='main_image' src={post.image}/>  
               </div>
-            {/* </Corusel> */}
-        
+                <Corusel 
+                  visible={visible} 
+                  setVisible={setVisible}>
+                    <div className='item'>
+                      <img className='image1' src={post.image}/>
+                    </div>
+                    <div className='item'>
+                      <img className='image1'src={post.image}/>
+                    </div>
+                    <div className='item'>
+                      <img className='image1' src={post.image}/>
+                    </div>
+                    <div className='item'>
+                      <img className='image1' src={post.image}/>
+                    </div>
+              </Corusel>
         <div className='item_text'>
           {post.header}<br/>
           {post.body}<br/>

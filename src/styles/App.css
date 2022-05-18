@@ -4,17 +4,17 @@
   box-sizing: border-box;
 }
 
-html {
-  /* background-image: url(./../img/bg11.png) ; */
-  /* background-repeat: repeat; */
-  /* background-size:  30%; */
-}
+/* html {
+  background-image: url(./../img/bg3.png) ;
+  background-repeat: repeat;
+  background-size:  30%;
+} */
 
 #root {
   display: flex;
   flex-direction: column;
-  /* align-items: center; 
-  justify-content: center;  */
+  align-items: center; 
+  justify-content: center; 
 }
 
 
@@ -35,11 +35,38 @@ html {
 }
 
 
+/*Стили для страницы поста*/
+
+.photos_style {
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image_direction {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  max-width: 17.5%;
+  /* width: 10%; */
+  /* margin: 0 10px; */
+  /* justify-content: space-between; */
+}
+
+.item_image {
+  margin: 5px;
+  margin-right: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 5px #888;
+}
 
 .main_image {
   margin-right: 50px;
-  max-width: 65%;
-  max-height: 65%;
+  /* max-width: 750px;
+  max-height: 550px; */
+  width: 65%;
+  height: 65%;
   margin-top: 20px;
   border-radius: 20px;
   box-shadow: 0 0 5px #888;
@@ -50,28 +77,12 @@ html {
   border: 2px solid #CD5C5C;
   border-radius: 20px;
   margin-top: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 15px;
 }
-.image_direction {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  max-width: 17.5%;
- 
-  /* width: 10%; */
-  /* margin: 0 10px; */
-  /* justify-content: space-between; */
-}
 
-.item_image {
-  
-  margin: 5px;
-  margin-right: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 5px #888;
 
-}
+
 
 
 /* 
@@ -80,11 +91,7 @@ html {
 } */
 
 
-.photos_style {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .main_page_photo {
     position: relative;
@@ -93,7 +100,29 @@ html {
     right: 0;
     left: 0;
     width: 100%;
-    box-shadow: 0 0 5px #888;
-    border-radius: 10px;
-
+    box-shadow: 0px 4px 5px 0px rgb(214, 214, 214);
 }
+
+
+/* Corusel */
+
+.item {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(57, 61, 65);
+}
+
+.image1 {
+  position: relative;
+  z-index: 1;
+  max-width: 830px;
+  min-width: 680px;
+  max-height: 650px;
+  min-height: 500px;
+  
+  
+}  
+
+  

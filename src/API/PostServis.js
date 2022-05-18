@@ -13,17 +13,17 @@ export default class PostServise {
             return response;
             
     }
-    static async getSorting(ordering,limit, currentPage, previous) {
-        const response = await axios.get('http://127.0.0.1:8000/api/v1/notices/', {
-            params: {
-                ordering: ordering,
-                page_size: limit,
-                page: currentPage,
-                previous: previous
-            }
-        });
-        return response;
-    }
+    // static async getSorting(ordering,limit, currentPage, previous) {
+    //     const response = await axios.get('http://127.0.0.1:8000/api/v1/notices/', {
+    //         params: {
+    //             ordering: ordering,
+    //             page_size: limit,
+    //             page: currentPage,
+    //             previous: previous
+    //         }
+    //     });
+    //     return response;
+    // }
         
         
 
@@ -53,6 +53,7 @@ export default class PostServise {
 
     static async getById(id) {
         const response =await axios.get('http://127.0.0.1:8000/api/v1/notices/'+ id);
+        console.log(response);
         return response;
     }
     

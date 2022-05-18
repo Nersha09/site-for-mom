@@ -1,4 +1,4 @@
-.all_window {
+.screen {
     position: fixed;
     z-index: 1;
     top: 0;
@@ -6,5 +6,33 @@
     right: 0;
     left: 0;
     display: none;
-    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.screen.active {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_container {
+    height: 650px;
+    width: 1050px;
+    display: flex;
+    align-items: center;
+}
+
+.window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.all_pages {
+    display: flex; 
+    height: 100%;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
 }
