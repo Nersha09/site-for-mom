@@ -7,7 +7,7 @@ const PostItem = (props) => {
   const navigate = useNavigate();
     return(
       
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12}md= {4}>
           <Card sx={{ borderRadius: '15px', maxWidth: 345, mb: '20px', maxHeight:424, cursor:'pointer'}}>
             <CardMedia
               component="img"
@@ -18,7 +18,7 @@ const PostItem = (props) => {
                 mt: '10px',
               }}
               onClick={() => navigate(`/posts/${props.post.id}`)}
-              image ={props.post.image}
+              image={props.post.images[0]}
             />
             <CardContent>
               <div style={{color: 'grey',  display: 'flex', justifyContent: 'flex-end', fontSize: '0.8em'}}>

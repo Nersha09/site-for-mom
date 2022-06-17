@@ -17,9 +17,25 @@
 
 .main_container {
     height: 650px;
-    width: 1050px;
+    width: 1030px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 930px) {
+    .main_container {
+        height: 375px;
+        width: 680px;
+    }
+    
+}
+@media screen and (max-width: 480px) {
+    .main_container {
+        height: 375px;
+        width: 375px;
+    }
+    
 }
 
 .window {

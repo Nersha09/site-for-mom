@@ -1,17 +1,26 @@
-import { TextField } from '@mui/material';
+import {Box, Input, InputAdornment} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import React from 'react';
 
-const MyInput = (props) => {
+const MyInput = ({onChange}) => {
   return(
-    <TextField
+    <Box component="form"
       sx={{
-        '& .MuiTextField-root': {mt: '15px'},
+        '& > :not(style)': { m: 1 },
       }}
-      size='small'
-      {...props}
-      id="outlined-basic" 
-      
-    />
+      noValidate
+      autoComplete="off">
+        <Input 
+          placeholder='Поиск'
+          onChange={e => onChange(e.target.value)}
+          startAdornment={
+            <InputAdornment position='start'>
+              <SearchIcon/>
+            </InputAdornment>
+          }
+        />
+    </Box>
+
   );
 };
 export default MyInput;

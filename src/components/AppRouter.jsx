@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Routes, Route} from 'react-router-dom';
 import About from '../pages/About';
 import ItemPage from '../pages/ItemPage';
@@ -7,23 +7,29 @@ import Posts from '../pages/Posts';
 import Contacts from '../pages/Contacts';
 
 const AppRouter = () => {
+  // const [found, setFound] = useState(0)
   return(
     <Routes>
       <Route
-        path='/lost'
-        element={<Posts/>} />
+        path='/announcements'
+        element={<Posts/>}
+      />
       <Route
         path='/main'
-        element={<MainPage/>} />
+        element={<MainPage/>} 
+      />
       <Route
         path='/posts/:id'
-        element={<ItemPage/>} />
+        element={<ItemPage/>} 
+      />
       <Route
         path='/about'
-        element={<About/>}/>
+        element={<About/>}
+      />
       <Route
         path='/contacts'
-        element={<Contacts/>}/>
+        element={<Contacts/>}
+      />
     </Routes>
   )
 }

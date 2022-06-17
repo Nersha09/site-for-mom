@@ -1,37 +1,48 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography, Input, FormControlLabel, Checkbox } from "@mui/material";
 import React, { useEffect, useState} from "react";
 import MyButton from "../UI/buttton/MyButton";
 import MyInput from "../UI/input/MyInput";
 import PostServise from "../API/PostServis";
 import { useFetching } from "../hooks/useFetching";
+import MyRadio from "../UI/type radio/MyRadio";
 
 
 const PostForm= (props) => {
-    const [post, setPost] = useState({header: '', body: '', image: '', image_1: '', image_2: '', image_3: '', date: '', found: 0});
- // const fetchSortPosts = async () => {
-  //     const response = await PostServise.getSorting()
-  //     setOrdering(response.data.results)
+    const [post, setPost] = useState({
+        header: '', 
+        body: '', 
+        images: [], 
+        date: '', 
+        found: 1
+    });
     const [fetchPost, postError] = useFetching(async() => {
-        const response = await PostServise.keepPost(post.image, post.image_1, post.image_2, post.image_3, post.header, post.body, post.date, post.found)
-        console.log(response.data);
+        const response = await PostServise.keepPost(post.images, post.header, post.body, post.found, post.date, )
     })
-
+    
+    
+    // const options = [
+    //     {value: 0, name: 'Потеряшки'},
+    //     {value: 1, name: 'Найденыши'},
+    //     {value: 2, name: 'Ищут новый дом'}
+    // ]
     const createNewPost = (e) => {
         e.preventDefault();
+        console.log('tot');
         const newPost = {
             ...post,
             id: Date.now(),
         };
         props.create(newPost);
-        setPost({image: '', header: '', body: '',date: ''})
+        setPost({images: '', header: '', body: '',date: ''})
         fetchPost();
+    
 
     }
-
+ 
     return(
         <div>
             <div className="form_style">
-                <MyInput
+                <TextField
                     style={{marginBottom: '10px', width: '100%'}}
                     value={post.header}
                     placeholder='Место для заголовка'
@@ -47,23 +58,30 @@ const PostForm= (props) => {
                     placeholder='Введите основной текст'
                 />
             </div >  
+            <div>
+                
+            </div>
+                <MyRadio 
+                    onChange={e => setPost({...post, found: e})}
+                />
+                
+            
+            
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                {/* <Button 
-                    color='error'
-                    component="label" 
-                    variant="outlined" 
-                >
-                    Загрузить фото */}
+            
+                <label htmlFor="contained-button-file">
                     <input 
-                        // style={{display: 'none'}}
+                        style={{display: 'none'}}
+                        id="contained-button-file" 
                         accept="image/*"
-                        type='file'
-                        required multiple
-                        // name='files[]'
-                        onChange={e => setPost({...post, image: e.target.files, image_1: e.target.files, image_2: e.target.files, image_3: e.target.files})}
-                    />
-                {/* </Button> */}
-                    
+                        multiple 
+                        type="file"
+                        onChange={e => setPost({...post, images: e.target.files})}
+                    />  
+                    <Button variant="contained" color="error" component="span">
+                        добавить
+                    </Button>
+                </label> 
                 
                
                 <Button 

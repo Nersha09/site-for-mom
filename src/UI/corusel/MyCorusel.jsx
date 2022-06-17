@@ -4,10 +4,12 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { IconButton } from '@mui/material';
 
-const Corusel = ({children, visible, setVisible}) => {
+const Corusel = ({children, visible, setVisible, post}) => {
 const [page, setPage] = useState([]);
 const [offSet, setOffSet] = useState(0);
-const pageWidth = 950;
+const [pageWidth, setPageWidth] = useState(950);
+
+
 const rootClasses = [cl.screen];
 if (visible) {
   rootClasses.push(cl.active)
@@ -17,6 +19,7 @@ const rightArrowClick = () => {
   setOffSet((curretnPage => {
     const newOffset = curretnPage - pageWidth;
     const maxOffset = -(pageWidth * (page.length-1));
+    console.log(maxOffset);
     return Math.max(newOffset, maxOffset)
   }))
 }
@@ -41,13 +44,20 @@ const chengState = () => {
 }
 useEffect(() =>{
    chengState()
-}, [])
+   if (window.screen.width < 480) {
+    setPageWidth(295)
+  } else if (window.screen.width < 930){
+    setPageWidth(600)
+  } else {
+    setPageWidth(950)
+  }
+}, [visible])
 
   return(
     <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
         <div className={cl.main_container} onClick={e => e.stopPropagation()}>
           <IconButton sx={{}} onClick={leftArrowClick}>
-            <ChevronLeftIcon fontSize='large'/>
+            <ChevronLeftIcon fontSize='inherit'/>
           </IconButton>
             <div className={cl.window}>
               <div className={cl.all_pages} 
@@ -56,7 +66,7 @@ useEffect(() =>{
               </div>
             </div>
            <IconButton sx={{}} onClick={rightArrowClick}>
-            <ChevronRightIcon fontSize='large'/>
+            <ChevronRightIcon fontSize='inherit'/>
           </IconButton> 
         </div>
     </div>

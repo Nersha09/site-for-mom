@@ -1,31 +1,29 @@
 
-import React, {useState} from "react";
+import { IconButton, InputAdornment } from "@mui/material";
+import React from "react";
 import MyInput from "../UI/input/MyInput";
 import MySelect from "../UI/select/MySelect";
-import SearchButton from "../UI/iconButton/SearchButton";
-import { IconButton } from "@mui/material";
-import PostServise from "../API/PostServis";
-import { useFetching } from "../hooks/useFetching";
+import SearchIcon from '@mui/icons-material/Search';
 
-const PostFilter = ({ filter, setFilter, fetchSortedPosts}) => {
-    
-  
+const PostFilter = ({filter, fetchSortedPosts, fetchSortedCategory, fetchSearchPosts }) => {
+ 
     return(
+        
         <div className="filter_style">
-            {/* <IconButton onClick={() => setVisible(true)}>
-                <SearchButton/>
-            </IconButton> */}
-            <MyInput
-                    styles={{maxWidth: '226px'}}
-                    value={filter.query}
-                    // onChange={e => setFilter({...filter, query: e.target.value})}
-                    size="small"
-                    label="Поиск" 
-                    variant="outlined" 
-                    color="warning"
+          
+            <div className="select_filter">
+                <MySelect
+                value={filter.category}
+                onChange={e => fetchSortedCategory(e)}
+                defaultValue="Выбрать категорию"
+                options={[
+                    {value: 0, name: "Потеряшки"},
+                    {value: 1, name: "Найденыши"},
+                    {value: 2, name: "Ищут новый дом"},
+                ]}
             />
             <MySelect
-                value=''
+                value={filter.sort}
                 onChange={e => fetchSortedPosts(e)}
                 defaultValue="Сортировать"
                 options={[
@@ -33,6 +31,20 @@ const PostFilter = ({ filter, setFilter, fetchSortedPosts}) => {
                     {value: "header", name: "по названию"}
                 ]}
             />
+            </div>
+            <div className="input_filter">
+            <MyInput
+                    styles={{maxWidth: '226px',  marginLeft: '5px'}}
+                    value=''
+                    onChange={e => fetchSearchPosts(e)}
+                    size="small"
+                    placeholder="Поиск"
+                    color="warning"
+
+            />
+                
+            </div>
+
         </div>
     )
 }

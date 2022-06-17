@@ -1,4 +1,4 @@
-import {IconButton } from '@mui/material';
+import {IconButton, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import React, { useEffect, useState, useMemo } from 'react';
 import MyModal from '../UI/modal/MyModal';
@@ -8,73 +8,63 @@ import PostsList from '../components/PostsList';
 import PostServise from '../API/PostServis';
 import { useFetching } from '../hooks/useFetching';
 import MyPogination from '../UI/myPogination/MyPogination';
-import { Container } from '@mui/material';
+
 
 
 function Posts () {
   const [posts, setPosts] = useState([]);
-  const [filter, setFilter] = useState({sort: '', query: ''});
+  const [post, setPost] = useState({});
+  const [filter, setFilter] = useState({sort: '', category: ''});
   const [modal, setModal] = useState(false);
   const [limit, setLimit] = useState(12)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [ord, setOrd] = useState('-id');
-
-   
-  
-  // const sortedPostst = useMemo(() => {
-  //   if (filter.sort) {
-  //     return [...posts].sort((a, b) => {a[filter.sort].localeCompare(b[filter.sort])});
-  //   }
-  //     return posts;
-  // }, [filter.sort, posts])
-
-  // const sortSelectPosts = useMemo(() => {
-  //     return sortedPostst.filter(post => post.header.toLowerCase().includes(filter.query.toLowerCase()));
-      
-  // }, [filter.query, sortedPostst])
-  
+  const [found, setFound] = useState(0)
+  const [header, setHeader] = useState('')
   
   function addNewPost(newPost) {
     setPosts([...posts, newPost]);
     setModal(false);
   }
 
+  const fetchSearchPosts = async(value) => {
+    setHeader(value);
+    const response = await PostServise.getAll(ord, limit, currentPage, found, header);
+    setCurrentPage(0)
+    setCurrentPage(1)
+  }  
 
   const fetchSortedPosts = async(sorting) => {
     setOrd(sorting);
-    const response = await PostServise.getAll(ord, limit, currentPage);
+    setFilter({...filter, sort: sorting})
+    const response = await PostServise.getAll(ord, limit, currentPage, found, header);
     setCurrentPage(0)
     setCurrentPage(1)
-    // setPosts(response.data.results);
-    // setTotalPages(response.data.total_pages);
-    console.log(posts);
   }  
- 
-    
-    
+  const fetchSortedCategory = async(value) => {
+    setFound(value);
+    setFilter({...filter, category: value})
 
-  
+    const response = await PostServise.getAll(ord, limit, currentPage, found, header);
+    setCurrentPage(0)
+    setCurrentPage(1)
+  }
   
   const [fetchPosts, postsError] = useFetching(async() => {
-    const response = await PostServise.getAll(ord, limit, currentPage);
+    
+    const response = await PostServise.getAll(ord, limit, currentPage, found, header);
     setPosts(response.data.results);
-    console.log(ord);
     setTotalPages(response.data.total_pages);
-    console.log(response.data.results);
   }) 
 
-  // const [fetchSortedPosts, sortedError] = useFetching( async(sorting) => {
-    
 
-  // })
-
-  
   const changePage = (currentPage) => {
     setCurrentPage(currentPage);
   }
 
   useEffect(() => {
+    
     fetchPosts();
   }, [currentPage])
 
@@ -82,22 +72,23 @@ function Posts () {
   
   return (
     <div>
-      
-      <Container
-        sx={{
-          maxWidth: 'lg',
+                <Box 
+             sx={{
           bgcolor: '#FFFFF0',
-          border: '1px 0 0 1px solid #A9A9A9', 
           borderRadius: '15px',
           minHeight: '100vh', 
           boxShadow: '0 0 5px #888', 
+          m: '15px',
           mt:'20px', 
-          mb: '10px'}}>
+          mb: '10px'}} 
+            >
          <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '15px'}}>
           <PostFilter
             fetchSortedPosts={fetchSortedPosts}
+            fetchSortedCategory={fetchSortedCategory}
             filter={filter}
             setFilter={setFilter}
+            fetchSearchPosts={fetchSearchPosts}
           />
           <IconButton 
             style={{margin: '5px'}}
@@ -118,7 +109,8 @@ function Posts () {
             currentPage={currentPage}
             changePage={changePage}
           />
-      </Container>
+          </Box>
+
     </div> 
   );
 }

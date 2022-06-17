@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const MyAppBar = ({hendleCart}) => {
   return(
       <Box sx={{flexGrow: 1}} className='navbar'>
-        <AppBar  position= 'static' style={{backgroundColor: "white"}} >
+        <AppBar position='static' style={{backgroundColor: "white", boxShadow: 'none'}} >
         
             <Toolbar>
               <IconButton

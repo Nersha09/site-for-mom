@@ -5,7 +5,7 @@ import React from "react";
 const MySelect = ({defaultValue, options, value, onChange}) => {
     return(
         <Box sx={{
-            '& .MuiTextField-root': {ml: '5px', width: '226px' },
+            '& .MuiTextField-root': {ml: '5px', minWidth: '226px' },
           }}>
             <TextField
                 // sx={{ mt:'10px', minWidth: '40px'}}
@@ -22,7 +22,6 @@ const MySelect = ({defaultValue, options, value, onChange}) => {
                         {option.name}
                     </MenuItem >  
                 )}
-                
             </TextField>
         </Box>
         
