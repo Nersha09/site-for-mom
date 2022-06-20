@@ -1,9 +1,7 @@
 
-import { IconButton, InputAdornment } from "@mui/material";
 import React from "react";
 import MyInput from "../UI/input/MyInput";
 import MySelect from "../UI/select/MySelect";
-import SearchIcon from '@mui/icons-material/Search';
 
 const PostFilter = ({filter, fetchSortedPosts, fetchSortedCategory, fetchSearchPosts }) => {
  

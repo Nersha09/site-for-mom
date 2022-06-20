@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText} from '@mui/material';
+import {Link } from 'react-router-dom';
+import {Drawer, List, ListItem, ListItemIcon, ListItemText} from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
-import LensIcon from '@mui/icons-material/Lens';
-import Posts from '../../pages/Posts';
 
 const MyMenu = (props) => {
     const routsPage = [

@@ -24,37 +24,35 @@ const ItemPage = () => {
   return(
     <div>
       <Box 
-             sx={{
+        sx={{
           bgcolor: '#FFFFF0',
           borderRadius: '15px',
           minHeight: '100vh', 
           boxShadow: '0 0 5px #888', 
           mt:'20px', 
-          mb: '10px'}} 
-            >
-              <div 
-                className='photos_style' 
-                onClick={() => setVisible(true)}>
-                <div className='image_direction'>
-                  
-                    {images.map((image, ind) => 
-                      <div key={ind} className='img_container'> 
-                        <img  className='item_image' src={image}/>
-                      </div>
-                    )} 
+          mb: '10px'}}>
+        <div 
+          className='photos_style' 
+          onClick={() => setVisible(true)}>
+            <div className='image_direction'>
+              {images.map((image, ind) => 
+                <div key={ind} className='img_container'> 
+                  <img  className='item_image' src={image}/>
                 </div>
-                <img className='main_image' src={images[0]}/>  
+              )} 
+            </div>
+            <img className='main_image' src={images[0]}/>  
+        </div>
+        <Corusel 
+          post={post}
+          visible={visible} 
+          setVisible={setVisible}>
+            {images.map((image, ind) => 
+              <div key={ind} className='item'>
+                <img className='image1' src={image}/>
               </div>
-                <Corusel 
-                  post={post}
-                  visible={visible} 
-                  setVisible={setVisible}>
-                    {images.map((image, ind) => 
-                      <div key={ind} className='item'>
-                        <img className='image1' src={image}/>
-                      </div>
-                    )} 
-              </Corusel>
+            )} 
+        </Corusel>
         <div className='item_text'>
           <h2>{post.header}</h2>
           <br/>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Routes, Route} from 'react-router-dom';
 import About from '../pages/About';
 import ItemPage from '../pages/ItemPage';
@@ -7,7 +7,6 @@ import Posts from '../pages/Posts';
 import Contacts from '../pages/Contacts';
 
 const AppRouter = () => {
-  // const [found, setFound] = useState(0)
   return(
     <Routes>
       <Route

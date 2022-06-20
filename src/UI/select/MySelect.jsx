@@ -8,7 +8,6 @@ const MySelect = ({defaultValue, options, value, onChange}) => {
             '& .MuiTextField-root': {ml: '5px', minWidth: '226px' },
           }}>
             <TextField
-                // sx={{ mt:'10px', minWidth: '40px'}}
                 label={defaultValue}
                 size= 'small'
                 select

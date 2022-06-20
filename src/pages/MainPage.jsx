@@ -8,15 +8,14 @@ const MainPage = () => {
   const navigate = useNavigate();
   return(
     <div >
-       <Box 
-             sx={{
+      <Box 
+        sx={{
           bgcolor: '#FFFFF0',
           borderRadius: '15px',
           minHeight: '100vh', 
           boxShadow: '0 0 5px #888', 
           mt:'20px', 
-          mb: '10px'}} 
-            >
+          mb: '10px'}}>
             <MySlider/>
             <div style={{ display: 'flex', justifyContent: 'center', padding: '50px'}}>
               <Button 
@@ -32,7 +31,7 @@ const MainPage = () => {
                   Я нашел чужого друга
               </Button>
             </div>
-            </Box>
+        </Box>
     </div>
   )
 }

@@ -1,7 +1,5 @@
-import { Button, TextField, Typography, Input, FormControlLabel, Checkbox } from "@mui/material";
-import React, { useEffect, useState} from "react";
-import MyButton from "../UI/buttton/MyButton";
-import MyInput from "../UI/input/MyInput";
+import { Button, TextField} from "@mui/material";
+import React, {useState} from "react";
 import PostServise from "../API/PostServis";
 import { useFetching } from "../hooks/useFetching";
 import MyRadio from "../UI/type radio/MyRadio";
@@ -19,12 +17,6 @@ const PostForm= (props) => {
         const response = await PostServise.keepPost(post.images, post.header, post.body, post.found, post.date, )
     })
     
-    
-    // const options = [
-    //     {value: 0, name: 'Потеряшки'},
-    //     {value: 1, name: 'Найденыши'},
-    //     {value: 2, name: 'Ищут новый дом'}
-    // ]
     const createNewPost = (e) => {
         e.preventDefault();
         console.log('tot');

@@ -13,7 +13,6 @@ const MyAppBar = ({hendleCart}) => {
               <IconButton
                 onClick={hendleCart}
                 edge="start"
-                // color="inherit"
                 aria-label="menu"
                 sx={{ mr: 2 }}
               >

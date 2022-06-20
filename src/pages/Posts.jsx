@@ -35,9 +35,9 @@ function Posts () {
     setCurrentPage(1)
   }  
 
-  const fetchSortedPosts = async(sorting) => {
-    setOrd(sorting);
-    setFilter({...filter, sort: sorting})
+  const fetchSortedPosts = async(value) => {
+    setOrd(value);
+    setFilter({...filter, sort: value})
     const response = await PostServise.getAll(ord, limit, currentPage, found, header);
     setCurrentPage(0)
     setCurrentPage(1)
@@ -72,44 +72,43 @@ function Posts () {
   
   return (
     <div>
-                <Box 
-             sx={{
-          bgcolor: '#FFFFF0',
-          borderRadius: '15px',
-          minHeight: '100vh', 
-          boxShadow: '0 0 5px #888', 
-          m: '15px',
-          mt:'20px', 
-          mb: '10px'}} 
-            >
-         <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '15px'}}>
-          <PostFilter
-            fetchSortedPosts={fetchSortedPosts}
-            fetchSortedCategory={fetchSortedCategory}
-            filter={filter}
-            setFilter={setFilter}
-            fetchSearchPosts={fetchSearchPosts}
-          />
-          <IconButton 
-            style={{margin: '5px'}}
-            onClick={() => setModal(true)}
-            title="добавить объявление">
-              <AddIcon fontSize='large'/>
-          </IconButton>
-          </div>
-          <MyModal
-            visible={modal}
-            setVisible={setModal}>
-              
-              <PostForm create={addNewPost}/>
-          </MyModal>
-          <PostsList posts={posts}/>
-          <MyPogination 
-            totalPages={totalPages}
-            currentPage={currentPage}
-            changePage={changePage}
-          />
-          </Box>
+        <Box 
+            sx={{
+                bgcolor: '#FFFFF0',
+                borderRadius: '15px',
+                minHeight: '100vh', 
+                boxShadow: '0 0 5px #888', 
+                // m: '15px',
+                mt:'20px', 
+                mb: '10px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '15px'}}>
+              <PostFilter
+                fetchSortedPosts={fetchSortedPosts}
+                fetchSortedCategory={fetchSortedCategory}
+                filter={filter}
+                setFilter={setFilter}
+                fetchSearchPosts={fetchSearchPosts}
+              />
+              <IconButton 
+                style={{margin: '5px'}}
+                onClick={() => setModal(true)}
+                title="добавить объявление">
+                  <AddIcon fontSize='large'/>
+              </IconButton>
+              </div>
+              <MyModal
+                visible={modal}
+                setVisible={setModal}>
+                  
+                  <PostForm create={addNewPost}/>
+              </MyModal>
+              <PostsList posts={posts}/>
+              <MyPogination 
+                totalPages={totalPages}
+                currentPage={currentPage}
+                changePage={changePage}
+              />
+        </Box>
 
     </div> 
   );

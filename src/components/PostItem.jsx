@@ -1,4 +1,4 @@
-import { Card, CardContent, CardMedia, Grid, Typography, Container } from '@mui/material';
+import { Card, CardContent, CardMedia, Grid, Typography} from '@mui/material';
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ const PostItem = (props) => {
   const navigate = useNavigate();
     return(
       
-        <Grid item xs={12}md= {4}>
+        <Grid item xs={12} sm={6} md= {4}>
           <Card sx={{ borderRadius: '15px', maxWidth: 345, mb: '20px', maxHeight:424, cursor:'pointer'}}>
             <CardMedia
               component="img"
