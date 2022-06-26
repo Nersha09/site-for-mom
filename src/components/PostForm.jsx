@@ -1,8 +1,8 @@
-import { Button, TextField} from "@mui/material";
 import React, {useState} from "react";
 import PostServise from "../API/PostServis";
 import { useFetching } from "../hooks/useFetching";
 import MyRadio from "../UI/type radio/MyRadio";
+import { Button, TextField} from "@mui/material";
 
 
 const PostForm= (props) => {
@@ -19,7 +19,6 @@ const PostForm= (props) => {
     
     const createNewPost = (e) => {
         e.preventDefault();
-        console.log('tot');
         const newPost = {
             ...post,
             id: Date.now(),
@@ -37,36 +36,27 @@ const PostForm= (props) => {
                 <TextField
                     style={{marginBottom: '10px', width: '100%'}}
                     value={post.header}
+                    type="text"
                     placeholder='Место для заголовка'
                     onChange={e => setPost({...post, header: e.target.value})}
-                    type="text"
                 />
                 <TextField
-                    sx={{mb: '10px', width: '100%'}}
                     multiline
+                    sx={{mb: '10px', width: '100%'}}
                     rows={3}
                     value={post.body}
-                    onChange={e => setPost({...post, body: e.target.value})}
                     placeholder='Введите основной текст'
+                    onChange={e => setPost({...post, body: e.target.value})}
                 />
             </div >  
-            <div>
-                
-            </div>
-                <MyRadio 
-                    onChange={e => setPost({...post, found: e})}
-                />
-                
-            
-            
+            <MyRadio onChange={e => setPost({...post, found: e})}/>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            
                 <label htmlFor="contained-button-file">
                     <input 
+                        multiple
                         style={{display: 'none'}}
                         id="contained-button-file" 
                         accept="image/*"
-                        multiple 
                         type="file"
                         onChange={e => setPost({...post, images: e.target.files})}
                     />  
@@ -74,8 +64,6 @@ const PostForm= (props) => {
                         добавить
                     </Button>
                 </label> 
-                
-               
                 <Button 
                     color="error"
                     variant='contained'
@@ -83,7 +71,6 @@ const PostForm= (props) => {
                         Разместить
                 </Button> 
             </div>  
-                    
         </div>
     )
 }

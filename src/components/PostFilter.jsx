@@ -8,41 +8,38 @@ const PostFilter = ({filter, fetchSortedPosts, fetchSortedCategory, fetchSearchP
     return(
         
         <div className="filter_style">
-          
             <div className="select_filter">
+                <MySelect 
+                    styles={{marginLeft: '5px'}}
+                    value={filter.category}
+                    defaultValue="Выбрать категорию"
+                    options={[
+                        {value: 0, name: "Потеряшки"},
+                        {value: 1, name: "Найденыши"},
+                        {value: 2, name: "Ищут новый дом"},
+                    ]}
+                    onChange={e => fetchSortedCategory(e)}
+                />
                 <MySelect
-                value={filter.category}
-                onChange={e => fetchSortedCategory(e)}
-                defaultValue="Выбрать категорию"
-                options={[
-                    {value: 0, name: "Потеряшки"},
-                    {value: 1, name: "Найденыши"},
-                    {value: 2, name: "Ищут новый дом"},
-                ]}
-            />
-            <MySelect
-                value={filter.sort}
-                onChange={e => fetchSortedPosts(e)}
-                defaultValue="Сортировать"
-                options={[
-                    {value: "-date", name: "по дате"},
-                    {value: "header", name: "по названию"}
-                ]}
-            />
+                    value={filter.sort}
+                    defaultValue="Сортировать"
+                    options={[
+                        {value: "-date", name: "по дате"},
+                        {value: "header", name: "по названию"}
+                    ]}
+                    onChange={e => fetchSortedPosts(e)}
+                />
             </div>
             <div className="input_filter">
-            <MyInput
-                    styles={{maxWidth: '226px',  marginLeft: '5px'}}
+                <MyInput
+                    styles={{ marginLeft: '5px'}}
                     value=''
-                    onChange={e => fetchSearchPosts(e)}
                     size="small"
                     placeholder="Поиск"
                     color="warning"
-
-            />
-                
+                    onChange={e => fetchSearchPosts(e)}
+                />
             </div>
-
         </div>
     )
 }

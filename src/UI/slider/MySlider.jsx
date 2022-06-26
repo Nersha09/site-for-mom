@@ -7,13 +7,8 @@ const MySlider = () => {
     
 
   return(
-    <div style={{position: 'relative'}}>
+    <div >
       <SlickCarousel/>
-      {/* <div className='event_name'>
-      <div className='wrapper'>
-        всем првет!
-      </div>
-      </div> */}
     </div>
   )
 }

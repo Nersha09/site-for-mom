@@ -21,7 +21,7 @@ export default class PostServise {
         form.append('header', header);
         form.append('body', body);
         for (let i = 0 ; i < images.length ; i++) {
-            form.append("images", images[i]);
+            form.append("image", images[i]);
         };
         form.append('date', new Date().toISOString().split('T')[0]);
         form.append('is_active', true);

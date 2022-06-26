@@ -1,19 +1,20 @@
-import {IconButton, Box } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState} from 'react';
 import MyModal from '../UI/modal/MyModal';
 import PostFilter from '../components/PostFilter';
 import PostForm from '../components/PostForm';
 import PostsList from '../components/PostsList';
 import PostServise from '../API/PostServis';
-import { useFetching } from '../hooks/useFetching';
 import MyPogination from '../UI/myPogination/MyPogination';
+import {useFetching} from '../hooks/useFetching';
+import {IconButton} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+
+
 
 
 
 function Posts () {
   const [posts, setPosts] = useState([]);
-  const [post, setPost] = useState({});
   const [filter, setFilter] = useState({sort: '', category: ''});
   const [modal, setModal] = useState(false);
   const [limit, setLimit] = useState(12)
@@ -34,7 +35,6 @@ function Posts () {
     setCurrentPage(0)
     setCurrentPage(1)
   }  
-
   const fetchSortedPosts = async(value) => {
     setOrd(value);
     setFilter({...filter, sort: value})
@@ -45,7 +45,6 @@ function Posts () {
   const fetchSortedCategory = async(value) => {
     setFound(value);
     setFilter({...filter, category: value})
-
     const response = await PostServise.getAll(ord, limit, currentPage, found, header);
     setCurrentPage(0)
     setCurrentPage(1)
@@ -71,46 +70,38 @@ function Posts () {
 
   
   return (
-    <div>
-        <Box 
-            sx={{
-                bgcolor: '#FFFFF0',
-                borderRadius: '15px',
-                minHeight: '100vh', 
-                boxShadow: '0 0 5px #888', 
-                // m: '15px',
-                mt:'20px', 
-                mb: '10px'}}>
-            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '15px'}}>
+    <div style={{marginLeft: '20px'}}>
+          <div style={{
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                marginBottom: '5px',  
+                alignItems: 'flex-start'}}>
               <PostFilter
                 fetchSortedPosts={fetchSortedPosts}
                 fetchSortedCategory={fetchSortedCategory}
+                fetchSearchPosts={fetchSearchPosts}
                 filter={filter}
                 setFilter={setFilter}
-                fetchSearchPosts={fetchSearchPosts}
               />
               <IconButton 
-                style={{margin: '5px'}}
-                onClick={() => setModal(true)}
-                title="добавить объявление">
+                sx={{m: '5px'}}
+                title="добавить объявление"
+                onClick={() => setModal(true)}>
                   <AddIcon fontSize='large'/>
               </IconButton>
               </div>
               <MyModal
                 visible={modal}
                 setVisible={setModal}>
-                  
                   <PostForm create={addNewPost}/>
               </MyModal>
               <PostsList posts={posts}/>
               <MyPogination 
                 totalPages={totalPages}
                 currentPage={currentPage}
-                changePage={changePage}
-              />
-        </Box>
+                changePage={changePage}/>
+    </div>
 
-    </div> 
   );
 }
 

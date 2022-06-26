@@ -13,7 +13,15 @@ function App() {
   return (
     <BrowserRouter>
       <Header/>
-      <Container maxWidth='lg'>
+      <Container disableGutters maxWidth='lg' sx={{
+        paddingLeft: 'none',
+        paddingRight: 'none',
+
+                bgcolor: '#FFFFF0',
+                minHeight: '100vh', 
+                boxShadow: '0 0 5px #888', 
+                mt:'20px', 
+                mb: '10px'}}>
           <AppRouter/>
       </Container>
             

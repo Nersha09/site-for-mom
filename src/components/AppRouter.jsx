@@ -14,7 +14,7 @@ const AppRouter = () => {
         element={<Posts/>}
       />
       <Route
-        path='/main'
+        path='/'
         element={<MainPage/>} 
       />
       <Route

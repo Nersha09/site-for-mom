@@ -56,7 +56,7 @@ useEffect(() =>{
   return(
     <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
         <div className={cl.main_container} onClick={e => e.stopPropagation()}>
-          <IconButton sx={{}} onClick={leftArrowClick}>
+          <IconButton onClick={leftArrowClick}>
             <ChevronLeftIcon fontSize='inherit'/>
           </IconButton>
             <div className={cl.window}>
@@ -65,7 +65,7 @@ useEffect(() =>{
                   {page}
               </div>
             </div>
-           <IconButton sx={{}} onClick={rightArrowClick}>
+           <IconButton onClick={rightArrowClick}>
             <ChevronRightIcon fontSize='inherit'/>
           </IconButton> 
         </div>

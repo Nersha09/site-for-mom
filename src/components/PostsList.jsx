@@ -1,17 +1,15 @@
 import React from "react";
-import { Grid} from "@mui/material";
 import PostItem from "./PostItem";
+import { Grid} from "@mui/material";
 
 const PostsList = ({posts}) => {
-    
     return(
-            <Grid container spasing={{xs: 2, md: 3}} sx={{ml: '15px'}}>
-                {posts.map((post, index) =>
-                    <PostItem 
+        <Grid  container spacing={{xs: 2, md: 3}}>
+            {posts.map((post, index) =>
+                <PostItem 
                     key={post.id} 
                     number={index + 1} 
-                    post={post}
-                /> 
+                    post={post}/> 
             )}
         </Grid>
     );

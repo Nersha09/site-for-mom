@@ -6,7 +6,7 @@ const MyInput = ({onChange}) => {
   return(
     <Box component="form"
       sx={{
-        '& > :not(style)': { m: 1 },
+        '& > :not(style)': { m: 1, maxWidth: '170px' },
       }}
       noValidate
       autoComplete="off">
