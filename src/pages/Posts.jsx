@@ -99,7 +99,8 @@ function Posts () {
               <MyPogination 
                 totalPages={totalPages}
                 currentPage={currentPage}
-                changePage={changePage}/>
+                changePage={changePage}
+              />
     </div>
 
   );

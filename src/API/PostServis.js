@@ -2,17 +2,14 @@ import axios from 'axios';
 
 export default class PostServise {
     static async getAll(ord, limit, currentPage, found, header) {
-            const response = await axios.get('http://127.0.0.1:8000/api/v1/notices/', {
+            const response = await axios.get('http://79.174.13.186:8000/api/v1/notices/', {
                 params: {
                     ordering: ord,
                     page_size: limit,
                     page: currentPage,
                     found: found,
                     header: header
-                },
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                },
+                }
             });
             return response;
             
@@ -30,9 +27,8 @@ export default class PostServise {
         form.append('is_active', true);
         form.append('found', found)
 
-        const response = await axios.post('http://127.0.0.1:8000/api/v1/notices/', form, {
+        const response = await axios.post('http://79.174.13.186:8000/api/v1/notices/', form, {
             headers: {
-                "Access-Control-Allow-Origin": "*",
                 "Content-Type": "multipart/form-data",
             },
             
@@ -43,7 +39,7 @@ export default class PostServise {
     }
 
     static async getById(id) {
-        const response =await axios.get('http://127.0.0.1:8000/api/v1/notices/'+ id);
+        const response =await axios.get('http://79.174.13.186:8000/api/v1/notices/'+ id);
         return response;
     }
 
