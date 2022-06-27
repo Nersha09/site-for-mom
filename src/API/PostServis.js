@@ -9,7 +9,10 @@ export default class PostServise {
                     page: currentPage,
                     found: found,
                     header: header
-                }
+                },
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                },
             });
             return response;
             
@@ -29,6 +32,7 @@ export default class PostServise {
 
         const response = await axios.post('http://127.0.0.1:8000/api/v1/notices/', form, {
             headers: {
+                "Access-Control-Allow-Origin": "*",
                 "Content-Type": "multipart/form-data",
             },
             
