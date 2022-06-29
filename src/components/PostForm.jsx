@@ -16,7 +16,7 @@ const PostForm= (props) => {
     const [fetchPost, postError] = useFetching(async() => {
         const response = await PostServise.keepPost(post.images, post.header, post.body, post.found, post.date, )
     })
-    
+    console.log(post.images);
     const createNewPost = (e) => {
         e.preventDefault();
         const newPost = {
@@ -26,8 +26,6 @@ const PostForm= (props) => {
         props.create(newPost);
         setPost({images: '', header: '', body: '',date: ''})
         fetchPost();
-    
-
     }
  
     return(

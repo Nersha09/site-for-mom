@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const PostItem = ({post}) => {
   const navigate = useNavigate();
-  console.log(post.images[0]);
     return(
-      
         <Grid item xs={12} sm={6} md= {4}>
           <Card
             sx={{ 
