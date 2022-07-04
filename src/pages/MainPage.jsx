@@ -9,13 +9,15 @@ const MainPage = () => {
   return(
       <div>
             <MySlider/>
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '50px'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', margin: '5%'}}>
               <Button 
                 style={{
-                  width: '250px', 
-                  height: '150px', 
+                  maxWidth: '250px',
+                  maxHeight: '150px',
+                  width: '40%', 
+                  height: 'auto',  
                   backgroundColor: '#D2691E', 
-                  fontSize: '13pt'}} 
+                  fontSize: '85%'}} 
                 variant='contained' 
                 size='large'
                 onClick={() => navigate('/announcements/?found=0')}>
@@ -23,11 +25,14 @@ const MainPage = () => {
               </Button>
               <Button 
                 style={{
-                  marginLeft: '50px', 
-                  width: '250px', 
-                  height: '150px',  
+                  marginLeft: '5%', 
+                  maxWidth: '250px',
+                  maxHeight: '150px',
+                  minHeight: '100px',
+                  width: '40%', 
+                  height: 'auto',  
                   backgroundColor: '#A52A2A', 
-                  fontSize: '13pt'}} 
+                  fontSize: '85%'}} 
                 variant='contained' size='large'
                 onClick={() => navigate('/announcements/?found=0')}>
                   Я нашел чужого друга

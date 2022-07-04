@@ -15,9 +15,47 @@
     align-items: center;
 }
 
-.main_container {
+/* .main_container {
     height: 650px;
     width: 1030px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 980px) {
+    .main_container {
+        height: 375px;
+        width: 680px;
+    }
+    
+}
+@media screen and (max-width: 480px) {
+    .main_container {
+        height: 375px;
+        width: 375px;
+    }
+    
+}
+
+.window {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.all_pages {
+    display: flex; 
+    height: 100%;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+} */
+
+.main_container {
+    max-height: 650px;
+    max-width: 1030px;
     display: flex;
     align-items: center;
     justify-content: center;
